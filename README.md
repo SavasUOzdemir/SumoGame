@@ -23,3 +23,8 @@ After Player-controlled character falls-dies. || karakterimiz düşüp öldükte
 
 Game Over screen || Oyun Bitti ekranı
 ![image](https://user-images.githubusercontent.com/94976406/216799604-95d02b73-6079-4235-bfd3-8bf0ee4d831f.png)
+
+
+05.02.2023, 22:07TRT - Known Issues
+-If player collides with other multiple times before killing them, score is calculated multiple times. This can be avoided by adding a method to remember the name of the collision objects and apply score once once one falls down. Another potential solution may be to keep this information in a separate empty gameobject.
+-Even though playmode starts without any compile errors, after food items are consumed / destroyed, the AI agents throw nullreferenceexception errors. This may be solved again by keeping the list of active food and player gameobjects in a separate list, or adding nullchecks to their related behavior to re-calculate on targets being null. However, in the editor this does not really cause any actual problems.
