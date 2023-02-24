@@ -54,35 +54,20 @@ public class PlayerScript : MonoBehaviour
         else if (other.CompareTag("PlayerBack"))
         {
             other.transform.parent.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce * 30);
-            StartCoroutine(KillListener(other.transform.parent.gameObject));
         }
     
     }
     //normal push, pretty straightforward i gýess
-    //check killlistener coroutine
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce * 15);
-            StartCoroutine(KillListener(collision.gameObject));
-        }
     }
     //this coroutine checks whether an agent dies after being hit by player. if they die in 5sec window, player gets score. 
 
-    IEnumerator KillListener(GameObject other)
+    private void GetKillScore()
     {
-        float killTimer = 5f;
-        while (killTimer >= 0.01f)
-        {
-            if (other == null)
-            {
-                Score += 10;
-                scoreText.text = "Score: " + Score;
-                break;
-            }
-            killTimer -= 0.1f ;
-            yield return new WaitForSeconds(0.1f);
-        }
+        Score += 10;
+        scoreText.text = "Score: " + Score;
     }
 }

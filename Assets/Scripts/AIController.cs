@@ -10,6 +10,7 @@ public class AIController : MonoBehaviour
     [SerializeField] float growAmount = 0.033f;
     [SerializeField] float pushForce = 10f;
 
+    private GameObject lastTouchPlayer;
     private GameObject[] players;
     private GameObject[] foods;
     private Rigidbody rb;
@@ -126,6 +127,7 @@ public class AIController : MonoBehaviour
         else if (other.CompareTag("Fall"))
         {
             Destroy(this.gameObject);
+            lastTouchPlayer.SendMessage(nameof(GetKillScore));
         }
         else if (other.CompareTag("PlayerBack"))
         {
@@ -138,7 +140,13 @@ public class AIController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            lastTouchPlayer = collision.gameObject;
             collision.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * pushForce * 15);
         }
+    }
+
+    private void GetKillScore() 
+    {
+        return;
     }
 }
