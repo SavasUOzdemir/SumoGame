@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 9019279829477428083}
   - component: {fileID: 9019279829477428086}
   - component: {fileID: 9019279829477428082}
+  - component: {fileID: 377304870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -186,9 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growAmount: 0.1
   pushForce: 10
-  pushDistance: 1
   speed: 1
-  rotateSpeed: 35
+  rotateSpeed: 75
+  scoreText: {fileID: 0}
+  spareCamera: {fileID: 0}
 --- !u!136 &9019279829477428086
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -219,6 +221,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &377304870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019279829477428040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95020ec8433052047967ce9b19c14607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9118879489305961480
 GameObject:
   m_ObjectHideFlags: 0

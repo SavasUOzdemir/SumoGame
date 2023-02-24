@@ -14,7 +14,7 @@ public class AIController : MonoBehaviour
     private GameObject[] foods;
     private Rigidbody rb;
     [SerializeField] bool eatMode = true;
-    
+
     //When the scene starts, repeated update functions are invoked. Also, for each AI agent the modecheck function is also invoked. This function determines AI
     //behavior in terms of whether AI is trying to kill other players or if it is searching for food. 
     private void Start()
@@ -79,22 +79,24 @@ public class AIController : MonoBehaviour
         {
             foreach (GameObject food in foods)
             {
-                if (Vector3.Distance(food.transform.position, transform.position) < distance && food != null && foods != null)
-                {
-                    distance = Vector3.Distance(food.transform.position, transform.position);
-                    target = food.transform.position;
-                }
+                if (food != null)
+                    if (Vector3.Distance(food.transform.position, transform.position) < distance && foods != null)
+                    {
+                        distance = Vector3.Distance(food.transform.position, transform.position);
+                        target = food.transform.position;
+                    }
             }
         }
         else if (!eatMode)
         {
             foreach (GameObject player in players)
             {
-                if (Vector3.Distance(player.transform.position, transform.position) < distance && Vector3.Distance(player.transform.position, transform.position) > 0)
-                {
-                    distance = Vector3.Distance(player.transform.position, transform.position);
-                    target = player.transform.position;
-                }
+                if (player != null)
+                    if (Vector3.Distance(player.transform.position, transform.position) < distance && Vector3.Distance(player.transform.position, transform.position) > 0)
+                    {
+                        distance = Vector3.Distance(player.transform.position, transform.position);
+                        target = player.transform.position;
+                    }
             }
         }
         if (target == transform.position)
